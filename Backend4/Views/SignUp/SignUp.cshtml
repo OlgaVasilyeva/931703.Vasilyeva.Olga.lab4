@@ -1,0 +1,59 @@
+﻿@model Backend4.Models.SignUpViewModel
+@{
+    ViewBag.Title = "SignUp";
+}
+<h2>Sign up</h2>
+<form asp-action="SignUp" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-2 control-label">First name</label>
+        <div class="col-md-10">
+            <input asp-for="Firstname" class="form-control" type="text" />
+            <span asp-validation-for="Firstname"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Last name</label>
+        <div class="col-md-10">
+            <input asp-for="Lastname" class="form-control" type="text" />
+            <span asp-validation-for="Lastname"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Birthday</label>
+        <div class="col-md-10 form-inline">
+            <select asp-for="Day" value="" asp-items="@(new SelectList(ViewBag.AllDays, " Days"))" class="form-control">
+                <option disabled="disabled">Day</option>
+            </select>
+
+            <select asp-for="Month" asp-items="@(new SelectList(ViewBag.AllMonths, "Id", "Name"))" class="form-control">
+                <option disabled="disabled">Month</option>
+            </select>
+
+            <select asp-for="Year" asp-items="@(new SelectList(ViewBag.AllYears, " Years"))" class="form-control">
+                <option disabled="disabled">Year</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Gender</label>
+        <div class="col-md-10">
+            <div class="radio">
+                <label>
+                    <input asp-for="Gender" name="Gender" value="Male" type="radio" />
+                    Male
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input asp-for="Gender" name="Gender" value="Female" type="radio" />
+                    Female
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <button name="Action" class="btn btn-primary" value="true">Sign up</button>
+        </div>
+    </div>
+</form>

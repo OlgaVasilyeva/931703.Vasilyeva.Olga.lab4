@@ -1,0 +1,24 @@
+﻿@using Backend4.Models
+@model Backend4.Models.SignUpCredentialsViewModel
+@{
+    ViewBag.Title = "Sign Up Result";
+    var allMonths = ViewBag.AllMonths as SignUpMonth[];
+    var montsMap = allMonths.ToDictionary(x => x.Id);
+}
+<h2>Sign up result</h2>
+<dl class="dl-horizontal">
+    <dt>First name</dt>
+    <dd>@Model.Firstname</dd>
+    <dt>Last name</dt>
+    <dd>@Model.Lastname</dd>
+    <dt>Birthday</dt>
+    <dd>@montsMap[Model.Month].Name @Model.Day, @Model.Year</dd>
+    <dt>Email</dt>
+    <dd> @Model.Email</dd>
+    <dt>Password</dt>
+    <dd>@Model.Password</dd>
+    <dt>User existed</dt>
+    <dd>@Model.Exist</dd>
+    <dt>Remembered</dt>
+    <dd>@Model.Remembered</dd>
+</dl>
